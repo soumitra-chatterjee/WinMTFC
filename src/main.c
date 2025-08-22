@@ -11,21 +11,18 @@ int wmain(int argc, LPWSTR argv[]) {
     // DWORD processorCount = sysinfo.dwNumberOfProcessors;
     // wprintf(L"Processor Count: %lu\n", processorCount);
     
-    LARGE_INTEGER start, end, freq;
-    QueryPerformanceFrequency(&freq);
-    QueryPerformanceCounter(&start);
+    // LARGE_INTEGER start, end, freq;
+    // QueryPerformanceFrequency(&freq);
+    // QueryPerformanceCounter(&start);
 
     if (argc < 3) {
         CustomErrorMsgConsole(L"\n(Insufficient Arguments) Expected: <source-dir> <destination-dir>\n");
     }
     wchar_t* sourceFolderPath = argv[1];
     wchar_t* destFolderPath = argv[2];
-    // WRONG wchar_t* tempSourceFolderPath = argv[1] or sourceFolderPath; // do not copy the pointer 
 
     WCHAR tempSourceFolderPath[MAX_PATH];
     StringCchPrintfW(tempSourceFolderPath, MAX_PATH, L"%s", sourceFolderPath);
-
-    // wprintf(L"%ls", sourceFolderPath);
 
     size_t sourceLength, destLength;
     BOOL pathlenflag = TRUE;
@@ -145,9 +142,9 @@ int wmain(int argc, LPWSTR argv[]) {
     FindClose(hFind);
     CustomSuccessMsgConsole(L"\nAll Files have been copied\n");
 
-    QueryPerformanceCounter(&end);
-    double elapsedTime = (double) (end.QuadPart - start.QuadPart) / freq.QuadPart;
-    printf("\n time taken %.6f s", elapsedTime);
+    // QueryPerformanceCounter(&end);
+    // double elapsedTime = (double) (end.QuadPart - start.QuadPart) / freq.QuadPart;
+    // printf("\n time taken %.6f s", elapsedTime);
 
     return 0;
 }
