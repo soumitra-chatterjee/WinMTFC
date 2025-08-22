@@ -3,10 +3,6 @@
 #include <windows.h>
 #include "handle_error.h"
 
-// remove it later
-#include <stdio.h>
-// #define max_path_length 512
-
 typedef struct {
     wchar_t sourcePath[MAX_PATH];
     wchar_t destinationPath[MAX_PATH];
